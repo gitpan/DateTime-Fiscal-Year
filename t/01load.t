@@ -4,12 +4,12 @@ use DateTime;
 use DateTime::Fiscal::Year;
 
 use strict;
-# See if we get a valid object
+
 {
-my $sf = DateTime->new(year => 2003, month=> 02, day=>01);
-my $td = DateTime->new(year => 2003, month=> 03, day=>01);
+my $dt = DateTime->new(year => 2003, month=> 02, day=>01);
+my $dt2 = DateTime->new(year => 2003, month=> 03, day=>01);
 
-my $dtfy = DateTime::Fiscal::Year->new(fiscal_start => $sf, target_date => $td);
+my $fiscal = DateTime::Fiscal::Year->new( start => $dt );
 
-isa_ok( $dtfy, 'DateTime::Fiscal::Year' );
+isa_ok( $fiscal, 'DateTime::Fiscal::Year' );
 }

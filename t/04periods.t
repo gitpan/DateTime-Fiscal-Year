@@ -6,11 +6,11 @@ use DateTime::Fiscal::Year;
 use strict;
 # Calculate Period of Fiscal Year
 {
-my $sf = DateTime->new(year => 2003, month=> 02, day=>01);
-my $td = DateTime->new(year => 2003, month=> 04, day=>01);
+my $dt = DateTime->new(year => 2003, month=> 02, day=>01);
+my $dt2 = DateTime->new(year => 2003, month=> 04, day=>01);
 
-my $dtfy = DateTime::Fiscal::Year->new(fiscal_start => $sf, target_date => $td);
+my $fiscal = DateTime::Fiscal::Year->new( start => $dt );
 
-is( $dtfy->period_of_fiscal_year(12), 3,		'Period of Fiscal Year' );
-is( $dtfy->quarter_of_fiscal_year, 1, 			'Quarter Fiscal Year' );
+is( $fiscal->period_of_fiscal_year('12', $dt2), 3,		'Period of Fiscal Year' );
+is( $fiscal->quarter_of_fiscal_year(12, $dt2), 1, 			'Quarter Fiscal Year' );
 }

@@ -1,8 +1,7 @@
 OVERVIEW
 
 The DateTime-Fiscal-Year module is intended to provide methods for adjusting the start date of a calendar to match the start 
-date 
-of a fiscal calendar and calculate the day or week of the fiscal year for a target date.
+date of a fiscal calendar and calculate the day or week of the fiscal year for a target date.
 
 INSTALLATION
 
@@ -21,13 +20,13 @@ use DateTime;
 use DateTime::Fiscal::Year;
 use strict;
 
-my $sfy = DateTime->new(year => 2003, month=> 02, day=>01);
-my $td	= DateTime->new(year => 2003, month=> 03, day=>01);
+my $dt = DateTime->new(year => 2003, month=> 02, day=>01);
+my $dt2	= DateTime->new(year => 2003, month=> 03, day=>01);
 
-my $dtfy = DateTime::Fisca::Year->new(fiscal_start => $sfy, target_date => $td);
+my $fiscal = DateTime::Fiscal::Year->new( start => $dt );
 
-$dtfy->day_of_fiscal_year;		# February 1 is now day 1 so March 1 is day 29, not day 60
-$dtfy->week_of_fiscal_year;		# February 1 is now in week 1 so March 1 is now week 5 not 8
+$fiscal->day_of_fiscal_year( $dt2 );		# February 1 is now day 1 so March 1 is day 29, not day 60
+$fiscal->week_of_fiscal_year( $dt2 );		# February 1 is now in week 1 so March 1 is now week 5 not 8
 
 
 Refer to the modules documentation for further details, or look at the test in t/  They provide serveral examples.
